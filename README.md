@@ -7,7 +7,7 @@
 
 A **full-stack web application** that extracts and analyzes text from PDFs and images to help improve social media posts. Upload your file, get the text extracted via OCR or PDF parsing, and receive actionable insights on readability, hashtags, emojis, and call-to-action suggestions.  
 
-**Live Demo:** [Click Here](YOUR_FRONTEND_URL)
+**Live Demo:** [Click Here](https://content-analyzer-sigma.vercel.app/)
 
 ---
 
