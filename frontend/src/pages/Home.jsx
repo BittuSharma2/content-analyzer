@@ -4,15 +4,17 @@ import ResultBox from "../components/ResultBox";
 import useFileProcessor from "../hooks/useFileProcessor";
 
 export default function Home() {
-  const backendURL = "http://localhost:5000";
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
 
   const {
     loading,
+    uploadProgress,
+    uploadedFile,
     extractedText,
     analysis,
     error,
-    uploadFile,
-    analyzeText,
+    handleFileSelect,
+    handleAnalyze,
   } = useFileProcessor(backendURL);
 
   return (
@@ -27,7 +29,7 @@ export default function Home() {
         </div>
       )}
 
-      <FileUpload onFileSelect={uploadFile} />
+      <FileUpload onFileSelect={handleFileSelect} />
 
       {loading && <Loader />}
 
@@ -37,16 +39,15 @@ export default function Home() {
 
       {extractedText && (
         <button
-          onClick={analyzeText}
-          className="bg-blue-600 text-white px-4 py-2 rounded mt-4 hover:bg-blue-700 transition"
+          onClick={handleAnalyze}
+          className="bg-blue-600 text-white px-4 py-2 rounded mt-4 w-full 
+          hover:bg-blue-700 transition"
         >
           Analyze Text
         </button>
       )}
 
-      {analysis && (
-        <ResultBox title="Analysis Result" content={analysis} />
-      )}
+      {analysis && <ResultBox title="Analysis Result" content={analysis} />}
     </div>
   );
 }
